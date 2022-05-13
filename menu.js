@@ -102,14 +102,48 @@ console.log('Pizza Category: ', category);
 */
 
 //CODE HERE
-let foodArr = [
-    {name: 'Supreme'},
-    {price: 12},
-    {popularity:10},
-    {rating:10},
-    {category:'Entree'},
-    {tags: ['Kids', 'Classic', 'Sale']}
-]
+const foodArr = [
+    {
+      name: 'Chicken Wings',
+      price: 12,
+      category: 'APP',
+      popularity: 10,
+      rating: 9,
+      tags: ['Kids', 'Bone-In', 'Garlic Parm']
+  },
+    {
+      name: 'Pasta',
+      price: 18,
+      category: 'Entree',
+      popularity: 6,
+      rating: 7,
+      tags: ['Red Sauce', 'Happy Hour']
+    },
+    {
+      name: 'Cheese Pizza',
+      price: 14,
+      category: 'Entree',
+      popularity: 8,
+      rating: 9,
+      tags: ['Kids', 'Vegetarian', 'Deep Dish']
+    },
+    {
+      name: 'Supreme Pizza',
+      price: 16,
+      category: 'Entree',
+      popularity: 10,
+      rating: 9,
+      tags: ['ThreeMeat', 'NY Style', 'HappyHour']
+    },
+    {
+      name: 'MeatBalls',
+      price: 8,
+      category: 'APP',
+      popularity: 5,
+      rating: 7,
+      tags: ['Kids', 'Marinara Sauce']
+    }
+  ];
 
 console.log(foodArr)
 
@@ -136,6 +170,8 @@ console.log(foodArr)
 //     return element[5]['key'] === tag
 // })
 // console.log(filterFood);
+const filteredFood = foodArr.filter (element => element.tags.includes('Kids'));
+console.log(filteredFood);
 
 
 
@@ -179,12 +215,17 @@ console.log(foodArr)
 */
 
 //CODE HERE
-// const filterByProperty = (property, number, type) => {
-//     let filteredArray = [];
+const filterByProperty = (property, number, type) => {
+    let filteredArray = foodArr.filter(food => {
+        if(type === 'above'){
+            return food[property] > number;
+        } else {
+          return food[property] < number;    
+        }
+    });
+  return filteredArray;
 
-
-// }
-
+}
 
 /*
     Invoke the `filterByProperty` function passing
@@ -194,3 +235,5 @@ console.log(foodArr)
 */
 
 //CODE HERE
+console.log(filterByProperty('price', 13, 'below'));
+console.log(filterByProperty('popularity', 8, 'above'));
